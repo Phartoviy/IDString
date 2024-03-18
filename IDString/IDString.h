@@ -6,6 +6,7 @@
 #include <string>
 #include <algorithm>
 #include <sstream>
+#include <regex>
 
 class IDString
 {
@@ -15,15 +16,12 @@ public:
 	IDString(std::string str):primaryStr(str){}
 	std::string getPrimary();
 
-
-
-
 	void SetValue(std::string tag, std::string val);
 	void SetValue(std::string tag, int val);
 	void SetValue(std::string tag, double val);
 
-	std::string GetValueStr(std::string tag);
-	int GetValueNum(std::string tag);
+	std::string GetValueStrByTag(std::string tag);
+	int GetValueNumByTag(std::string tag);
 
 	//ReadFile
 	//WriteFile

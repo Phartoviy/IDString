@@ -1,5 +1,6 @@
 #include "IDString.h"
 
+
 std::string IDString::getPrimary()
 {
 	return primaryStr;
@@ -43,19 +44,43 @@ void IDString::SetValue(std::string tag, double val)
 	primaryStr.replace(it, sizeSubStr, subline);
 }
 
-std::string IDString::GetValueStr(std::string tag)
+std::string IDString::GetValueStrByTag(std::string tag)
 {
-	std::string subLine = primaryStr.substr(primaryStr.find(tag+' '));
-	std::string result = subLine.substr(subLine.find(":") + 1, subLine.find(";") - subLine.find(":") - 1);
-	std::string value = result.substr(result.find_first_not_of(' '), result.find_last_not_of(' ') - result.find_first_not_of(' ') + 1);
-	return value;
+	std::string temp = tag + ' ';
+	int bpos = primaryStr.find(temp);
+	std::string subline = primaryStr.substr(bpos);
+	int epos = subline.find(';');
+	std::string resultSubline  = subline.substr(0, epos+1);//получение подстроки
+	std::regex pattern(temp + ":(.+?);");
+	std::smatch matches;
+	if (std::regex_search(resultSubline, matches, pattern))
+	{
+		if (matches.size() > 1)
+		{
+			std::string tagValue = matches[1];
+			return tagValue;
+		}
+	}
+	return "";
+
 }
 
-int IDString::GetValueNum(std::string tag)
+int IDString::GetValueNumByTag(std::string tag)
 {
-	std::string subLine = primaryStr.substr(primaryStr.find(tag + ' '));
-	std::string result = subLine.substr(subLine.find(":") + 1, subLine.find(";") - subLine.find(":") - 1);
-	std::string value = result.substr(result.find_first_not_of(' '), result.find_last_not_of(' ') - result.find_first_not_of(' ') + 1);
-	int num = atoi(value.c_str());
-	return num;
+	std::string temp = tag + ' ';
+	int bpos = primaryStr.find(temp);
+	std::string subline = primaryStr.substr(bpos);
+	int epos = subline.find(';');
+	std::string resultSubline = subline.substr(0, epos + 1);//получение подстроки
+	std::regex pattern(temp + ":([0-9]+);");
+	std::smatch matches;
+	if (std::regex_search(resultSubline, matches, pattern))
+	{
+		if (matches.size() > 1)
+		{
+			int tagValue = std::stoi(matches[1]);
+			return tagValue;
+		}
+	}
+	return 0;
 }
