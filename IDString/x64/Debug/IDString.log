@@ -1,14 +1,2 @@
-﻿  IDString.cpp
-D:\VisualProject\IDString\IDString\IDString.cpp(14,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(16,9): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(27,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(29,9): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(41,17): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(43,9): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(50,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(52,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(71,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-D:\VisualProject\IDString\IDString\IDString.cpp(73,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  Source.cpp
-  Создание кода...
+﻿  Source.cpp
   IDString.vcxproj -> D:\VisualProject\IDString\x64\Debug\IDString.exe

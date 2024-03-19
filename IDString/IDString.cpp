@@ -9,10 +9,9 @@ std::string IDString::getPrimary()
 void IDString::SetValue(std::string tag, std::string val)
 {
 	std::string subline = primaryStr.substr(primaryStr.find(tag+' '));
-	
 	subline = subline.substr(0, subline.find(';'));
 	int sizeSubStr = subline.length();
-	subline.replace(subline.find(':') + 1, subline.find(';') - 1, " " + val);
+	subline.replace(subline.find(':') + 1, subline.find(';') - 1,val);
 	int it = primaryStr.find(tag + ' ');
 	primaryStr.replace(it,sizeSubStr, subline);
 }
@@ -25,24 +24,25 @@ void IDString::SetValue(std::string tag, int val)
 
 	subline = subline.substr(0, subline.find(';'));
 	int sizeSubStr = subline.length();
-	subline.replace(subline.find(':') + 1, subline.find(';') - 1, " " + num);
+	subline.replace(subline.find(':') + 1, subline.find(';') - 1,num);
 	int it = primaryStr.find(tag + ' ');
 	primaryStr.replace(it, sizeSubStr, subline);
 
 }
 
-void IDString::SetValue(std::string tag, double val)
+/*void IDString::SetValue(std::string tag, double val)
 {
+	//TODO сделать округление числа
 	std::string num = std::to_string(val);
 
 	std::string subline = primaryStr.substr(primaryStr.find(tag + ' '));
 
 	subline = subline.substr(0, subline.find(';'));
 	int sizeSubStr = subline.length();
-	subline.replace(subline.find(':') + 1, subline.find(';') - 1, " " + num);
+	subline.replace(subline.find(':') + 1, subline.find(';') - 1,num);
 	int it = primaryStr.find(tag + ' ');
 	primaryStr.replace(it, sizeSubStr, subline);
-}
+}*/
 
 std::string IDString::GetValueStrByTag(std::string tag)
 {
