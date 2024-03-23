@@ -30,11 +30,13 @@ public:
 
 	bool DelAttribut(std::string delTag);
 
+	std::string GetValueStrByAttrNo(int numberAttr);
+	int GetValueNumByAttrNo(int numberAttr);
+
 
 	//ReadFile
 	//WriteFile
 	//GetValueDoub
-	//Kol-vo attributov
 	//GetTags()
 
 };

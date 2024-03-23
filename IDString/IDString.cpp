@@ -125,5 +125,64 @@ int IDString::GetAttrCount()
 
 bool IDString::DelAttribut(std::string delTag)
 {
-	return false;
+	std::string temp = delTag + ' ';
+	int bpos = primaryStr.find(temp);
+	if (bpos == std::string::npos)
+		return false;
+	std::string subline = primaryStr.substr(bpos);
+	int epos = subline.find(';');
+	std::string resultSubline = subline.substr(0, epos + 1);//получение подстроки
+	primaryStr.erase(bpos,epos+1);
+
+	return true;
+}
+
+std::string IDString::GetValueStrByAttrNo(int numberAttr)
+{
+	if (primaryStr.find(";") == std::string::npos)
+		return "";
+	size_t findPos{}, findLastPos{};
+	for (int i = 0; i < numberAttr; i++)
+	{
+		findLastPos = findPos;
+		findPos = primaryStr.find(";", findLastPos+1);
+	}
+	std::string subStr = primaryStr.substr(findLastPos+1, findPos-findLastPos);
+	std::regex pattern(":(.+?);");
+	std::smatch matches;
+	if (std::regex_search(subStr, matches, pattern))
+	{
+		if (matches.size() > 1)
+		{
+			std::string tagValue = matches[1];
+			return tagValue;
+		}
+	}
+
+	return "";
+}
+
+int IDString::GetValueNumByAttrNo(int numberAttr)
+{
+	if (primaryStr.find(";") == std::string::npos)
+		return 0;
+	size_t findPos{}, findLastPos{};
+	for (int i = 0; i < numberAttr; i++)
+	{
+		findLastPos = findPos;
+		findPos = primaryStr.find(";", findLastPos + 1);
+	}
+	std::string subStr = primaryStr.substr(findLastPos + 1, findPos - findLastPos);
+	std::regex pattern(":(.+?);");
+	std::smatch matches;
+	if (std::regex_search(subStr, matches, pattern))
+	{
+		if (matches.size() > 1)
+		{
+			std::string tagValue = matches[1];
+			return atoi(tagValue.c_str());
+		}
+	}
+
+	return 0;
 }
