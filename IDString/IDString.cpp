@@ -186,3 +186,40 @@ int IDString::GetValueNumByAttrNo(int numberAttr)
 
 	return 0;
 }
+
+std::set<std::string> IDString::GetTags()
+{
+	std::set<std::string> tagsList{};
+	size_t pos{0};
+	int it = 0;
+	while (pos != std::string::npos)
+	{
+		size_t lastPos = pos;
+		pos = primaryStr.find(";", lastPos+1);
+		if (lastPos != 0)
+			it = 1;
+		std::string subline = primaryStr.substr(lastPos+it, pos-lastPos);
+
+		std::regex pattern("(.+?) :");
+		std::smatch matches;
+		if (std::regex_search(subline, matches, pattern))
+		{
+			if (matches.size() > 1)
+			{
+				std::string tagName = matches[1];
+				tagsList.insert(tagName);
+			}
+		}
+	}
+	return tagsList;
+}
+
+std::string IDString::GetNameID()
+{
+	return nameID;
+}
+
+void IDString::setNameID(std::string name)
+{
+	nameID = name;
+}

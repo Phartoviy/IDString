@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="IDString.h" />
+    <ClInclude Include="Phoin.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IDString.cpp" />
+    <ClCompile Include="Phoin.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
