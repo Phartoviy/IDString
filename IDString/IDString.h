@@ -20,6 +20,11 @@ public:
 	IDString() = default;
 	IDString(std::string str):primaryStr(str){}
 	/// <summary>
+	/// Функция устанавливает строку идентификации 
+	/// </summary>
+	/// <param name="strPrim">строка в формате "tag1 :5;tag2 :ava;tag3 :45;"</param>
+	void setPrimary(std::string strPrim);
+	/// <summary>
 	/// Функция возвращающая строку идентификации
 	/// </summary>
 	/// <returns>Строка идентификации</returns>
@@ -59,9 +64,10 @@ public:
 	std::string GetNameID();
 	void setNameID(std::string name);
 
-	
+	std::string GetTagByAttrNo(int number);
 	//GetValueDoub
 
+	~IDString() = default;
 };
 
 

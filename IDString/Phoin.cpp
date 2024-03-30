@@ -17,3 +17,8 @@ bool Phoin::setKey(std::string key)
 		return false;
 	}
 }
+
+bool Phoin::WriteFile()
+{
+	return false;
+}

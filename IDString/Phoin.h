@@ -17,8 +17,9 @@ public:
 	Phoin(std::string key):idKey(key){}
 	std::string getKey();
 	bool setKey(std::string key);
+	bool WriteFile();
 	//ReadFile
-	//WriteFile
+
 
 
 private:

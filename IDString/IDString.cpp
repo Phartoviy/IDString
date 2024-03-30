@@ -1,6 +1,11 @@
 #include "IDString.h"
 
 
+void IDString::setPrimary(std::string strPrim)
+{
+	primaryStr = strPrim;
+}
+
 std::string IDString::getPrimary()
 {
 	return primaryStr;
@@ -222,4 +227,32 @@ std::string IDString::GetNameID()
 void IDString::setNameID(std::string name)
 {
 	nameID = name;
+}
+
+std::string IDString::GetTagByAttrNo(int number)
+{
+	int it = 0;
+	if (primaryStr.find(";") == std::string::npos || number > GetAttrCount())
+		return "";
+	size_t findPos{}, findLastPos{};
+	for (int i = 0; i < number; i++)
+	{
+		findLastPos = findPos;
+		findPos = primaryStr.find(";", findLastPos + 1);
+	}
+	if (findLastPos != 0)
+		it = 1;
+	std::string subStr = primaryStr.substr(findLastPos + it, findPos - findLastPos);
+	std::regex pattern("(.+?) :");
+	std::smatch matches;
+	if (std::regex_search(subStr, matches, pattern))
+	{
+		if (matches.size() > 1)
+		{
+			std::string tagName = matches[1];
+			return tagName;
+		}
+	}
+
+	return "";
 }
