@@ -3,8 +3,10 @@
 #define PHOIN_H
 
 #include "IDString.h"
-
-
+#include <fstream>
+#include <string>
+#include <unordered_map>
+//#include <crypt>
 /// <summary>
 ///  ласс Phoin контейнера позвол€ющего хранить строки идентификации и производить запись/чтение 
 /// идентифицирующих строк в бинарный файл
@@ -17,9 +19,10 @@ public:
 	Phoin(std::string key):idKey(key){}
 	std::string getKey();
 	bool setKey(std::string key);
+	void generateKey(std::string key);
 	bool addIDString(IDString obj);
 	bool WriteFile();
-	//ReadFile
+	bool ReadFile(std::string pathToFile);
 
 
 
